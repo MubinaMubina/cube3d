@@ -4,7 +4,7 @@
 
 ## Description
 
-cub3D is my first RayCaster built with the **miniLibX** library. Inspired by the
+cub3D is my first RayCaster built with the **MLX42** library. Inspired by the
 world-famous *Wolfenstein 3D* (Id Software, 1992) — considered the first true
 FPS — the goal is to render a "realistic" 3D first-person view of the inside of
 a maze using ray-casting techniques.
@@ -28,7 +28,8 @@ make re     # full rebuild
 ```
 
 The Makefile compiles with `-Wall -Wextra -Werror` using `cc`, builds `libft`
-and the `minilibx` from their own Makefiles, and does not relink unnecessarily.
+and **MLX42** (via its CMake build) from their own build systems, and does not
+relink unnecessarily.
 
 ### Run
 
@@ -64,6 +65,7 @@ C 225,30,0           # ceiling color R,G,B in [0,255]
 1111111111
 ```
 
+- Textures (`NO SO WE EA`) are **PNG** files, loaded with MLX42's `mlx_load_png`.
 - Map characters: `0` (empty), `1` (wall), `N/S/E/W` (player start + orientation),
   and spaces.
 - Elements (`NO SO WE EA F C`) may appear in any order; the map must be last.
@@ -84,14 +86,16 @@ A self-study path, in roughly the order it's needed for the build.
 - Texture mapping: `wallX`, picking the texture column, stepping texture Y.
 - Distinguishing N/S/E/W wall faces to choose the right texture.
 
-### 2. MiniLibX (graphics)
-- Window/image creation: `mlx_init`, `mlx_new_window`, `mlx_new_image`.
-- Drawing into an image buffer via `mlx_get_data_addr` (write pixels manually —
-  never `mlx_pixel_put` per pixel, it's far too slow).
-- Loading XPM textures: `mlx_xpm_file_to_image` + `mlx_get_data_addr`.
-- Event hooks: `mlx_hook` / `mlx_loop_hook`, key codes, clean window close
-  (the red cross, `DestroyNotify` / event 17).
-- `bits_per_pixel`, `line_length`, `endian` for correct pixel indexing.
+### 2. MLX42 (graphics)
+- Window/image creation: `mlx_init` (creates the window directly), `mlx_new_image`,
+  `mlx_image_to_window`.
+- Drawing into an image buffer: `mlx_put_pixel` or writing directly to
+  `image->pixels`, with colors packed as `0xRRGGBBAA`.
+- Loading textures from **PNG**: `mlx_load_png` → `mlx_texture_t`, then
+  `mlx_texture_to_image` (or sample `texture->pixels` directly for wall stripes).
+- Event handling: `mlx_key_hook` / `mlx_close_hook` for one-shot events and
+  `mlx_is_key_down` (polled inside `mlx_loop_hook`) for smooth movement.
+- Clean shutdown with `mlx_close_hook` and `mlx_terminate`.
 
 ### 3. Linear algebra / trig basics
 - 2D vectors and vector rotation (rotation matrix) for turning the view.
@@ -108,10 +112,10 @@ A self-study path, in roughly the order it's needed for the build.
 ### 5. C fundamentals & 42 norm
 - The 42 Norm (function length, variable limits, etc.).
 - Memory management: `valgrind` for zero leaks; free MLX resources
-  (`mlx_destroy_image`, `mlx_destroy_window`, `mlx_destroy_display`).
-- Makefile: `all clean fclean re bonus`, no relinking, libft + mlx builds.
+  (`mlx_delete_image`, `mlx_terminate`).
+- Makefile: `all clean fclean re bonus`, no relinking, libft + MLX42 (CMake) builds.
 
-**Suggested order:** C/Makefile/norm refresher → MiniLibX (pixel, image, keys)
+**Suggested order:** C/Makefile/norm refresher → MLX42 (pixel, image, keys)
 → ray-casting (untextured walls, then textures) → movement & rotation →
 parsing + flood fill.
 
@@ -119,8 +123,8 @@ parsing + flood fill.
 
 - **Lode Vandevenne — Raycasting tutorial** (the reference for this project):
   https://lodev.org/cgtutor/raycasting.html
-- **42 Docs — MiniLibX guide:**
-  https://harm-smits.github.io/42docs/libs/minilibx
+- **MLX42 — official repository & documentation:**
+  https://github.com/codam-coding-college/MLX42
 - **Original Wolfenstein 3D** (to test before starting): http://users.atw.hu/wolf3d/
 - Flood-fill algorithm references for the map-closure check.
 

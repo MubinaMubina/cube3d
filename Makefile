@@ -24,7 +24,12 @@ MLX_LIB		= $(MLX_BUILD)/libmlx42.a
 # ---- Sources -------------------------------------------------------------- #
 SRC_DIR		= src
 OBJ_DIR		= obj
-SRCS		= main.c init.c raycast.c render.c hooks.c utils.c
+SRCS		= main.c \
+			  game/init.c game/hooks.c \
+			  render/raycast.c render/render.c render/textures.c \
+			  parsing/read_file.c parsing/split_lines.c parsing/parse.c \
+			  parsing/parse_config.c parsing/parse_map.c parsing/validate.c \
+			  utils/utils.c utils/utils2.c
 OBJS		= $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
 # ---- Platform-specific link flags ----------------------------------------- #
@@ -49,7 +54,7 @@ $(MLX_LIB):
 	@cmake --build $(MLX_BUILD) --parallel
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
@@ -62,6 +67,9 @@ fclean: clean
 fclean_all: fclean
 	rm -rf $(MLX_BUILD)
 
+# No separate bonus binary: bonus features live in the mandatory build.
+bonus: all
+
 re: fclean all
 
-.PHONY: all clean fclean fclean_all re
+.PHONY: all clean fclean fclean_all re bonus

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::    */
-/*   raycast.c                                          :+:      :+:    :+:    */
-/*                                                    +:+ +:+         +:+      */
-/*   By: mmubina                                    +#+  +:+       +#+         */
-/*                                                +#+#+#+#+#+   +#+            */
-/*   Created: 2026/07/16                               #+#    #+#              */
-/*   Updated: 2026/07/16                              ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   raycast.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmubina <mmubina@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/16 00:00:00 by mmubina           #+#    #+#             */
+/*   Updated: 2026/07/16 00:00:00 by mmubina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes/cub3d.h"
 
 /* Ray direction for screen column x, mapped to camera space [-1, 1]. */
 static void	init_ray(t_game *game, t_ray *ray, int x)
@@ -106,4 +106,5 @@ void	cast_ray(t_game *game, t_ray *ray, int x)
 	init_step(game, ray);
 	run_dda(game, ray);
 	compute_stripe(ray);
+	compute_texture(game, ray);
 }

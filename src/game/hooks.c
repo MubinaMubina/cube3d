@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::    */
-/*   hooks.c                                            :+:      :+:    :+:    */
-/*                                                    +:+ +:+         +:+      */
-/*   By: mmubina                                    +#+  +:+       +#+         */
-/*                                                +#+#+#+#+#+   +#+            */
-/*   Created: 2026/07/16                               #+#    #+#              */
-/*   Updated: 2026/07/16                              ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   hooks.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmubina <mmubina@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/16 00:00:00 by mmubina           #+#    #+#             */
+/*   Updated: 2026/07/16 00:00:00 by mmubina          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes/cub3d.h"
 
 /* One-shot keys: ESC quits. Movement is polled in move_player. */
 void	key_hook(mlx_key_data_t keydata, void *param)

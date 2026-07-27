@@ -24,6 +24,7 @@ MLX_LIB		= $(MLX_BUILD)/libmlx42.a
 # ---- Sources -------------------------------------------------------------- #
 SRC_DIR		= src
 OBJ_DIR		= obj
+HEADER		= includes/cub3d.h
 SRCS		= main.c \
 			  game/init.c game/hooks.c \
 			  render/raycast.c render/render.c render/textures.c \
@@ -53,7 +54,7 @@ $(MLX_LIB):
 	@cmake -B $(MLX_BUILD) -S $(MLX_DIR) -DCMAKE_BUILD_TYPE=Release
 	@cmake --build $(MLX_BUILD) --parallel
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER)
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
@@ -67,7 +68,7 @@ fclean: clean
 fclean_all: fclean
 	rm -rf $(MLX_BUILD)
 
-# No separate bonus binary: bonus features live in the mandatory build.
+# Mandatory-only project: no bonus features, so bonus simply builds cub3D.
 bonus: all
 
 re: fclean all

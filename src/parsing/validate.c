@@ -12,7 +12,6 @@
 
 #include "../../includes/cub3d.h"
 
-/* Record the spawn cell centre and orientation, then blank the tile. */
 static void	set_spawn(t_game *g, int x, int y, char c)
 {
 	g->player.x = x + 0.5;
@@ -21,7 +20,6 @@ static void	set_spawn(t_game *g, int x, int y, char c)
 	g->map[y][x] = '0';
 }
 
-/* Check one cell: returns 1 for a player start, 0 otherwise; errors on junk. */
 static int	handle_cell(t_game *g, int x, int y)
 {
 	char	c;
@@ -38,7 +36,6 @@ static int	handle_cell(t_game *g, int x, int y)
 	return (0);
 }
 
-/* Validate every cell and require exactly one player start position. */
 static void	check_chars(t_game *g)
 {
 	int	x;

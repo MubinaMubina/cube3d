@@ -12,7 +12,6 @@
 
 #include "../../includes/cub3d.h"
 
-/* Draw the textured wall stripe for column x, from draw_start to draw_end. */
 static void	draw_wall(t_game *game, int x, t_ray *ray)
 {
 	mlx_texture_t	*tex;
@@ -34,7 +33,6 @@ static void	draw_wall(t_game *game, int x, t_ray *ray)
 	}
 }
 
-/* Draw one screen column: ceiling colour, textured wall, floor colour. */
 void	put_vertical(t_game *game, int x, t_ray *ray)
 {
 	int	y;
@@ -48,7 +46,6 @@ void	put_vertical(t_game *game, int x, t_ray *ray)
 		mlx_put_pixel(game->img, x, y++, game->floor_color);
 }
 
-/* Called every frame by mlx_loop_hook: move, then redraw all columns. */
 void	render_frame(void *param)
 {
 	t_game	*game;

@@ -12,7 +12,6 @@
 
 #include "../../includes/cub3d.h"
 
-/* One-shot keys: ESC quits. Movement is polled in move_player. */
 void	key_hook(mlx_key_data_t keydata, void *param)
 {
 	t_game	*game;
@@ -22,7 +21,6 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 		mlx_close_window(game->mlx);
 }
 
-/* Try to move to (nx, ny); block the axis that would enter a wall. */
 static void	try_move(t_game *game, double nx, double ny)
 {
 	if (!is_wall(game, (int)nx, (int)game->player.y))
@@ -31,7 +29,6 @@ static void	try_move(t_game *game, double nx, double ny)
 		game->player.y = ny;
 }
 
-/* Rotate the direction and camera plane vectors by angle (radians). */
 static void	rotate_view(t_player *p, double angle)
 {
 	double	old_dir_x;
@@ -45,7 +42,6 @@ static void	rotate_view(t_player *p, double angle)
 	p->plane_y = old_plane_x * sin(angle) + p->plane_y * cos(angle);
 }
 
-/* WASD strafing/forward-back, arrow keys to turn; frame-rate independent. */
 void	move_player(t_game *game)
 {
 	t_player	*p;

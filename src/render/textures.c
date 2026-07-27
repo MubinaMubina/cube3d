@@ -12,7 +12,6 @@
 
 #include "../../includes/cub3d.h"
 
-/* Load the four wall textures from their parsed PNG paths. */
 void	load_textures(t_game *g)
 {
 	int	i;
@@ -27,7 +26,6 @@ void	load_textures(t_game *g)
 	}
 }
 
-/* Pick the wall face texture and the texture column that the ray hit. */
 void	compute_texture(t_game *game, t_ray *ray)
 {
 	mlx_texture_t	*tex;
@@ -56,7 +54,6 @@ void	compute_texture(t_game *game, t_ray *ray)
 		ray->tex_x = tex->width - ray->tex_x - 1;
 }
 
-/* Read the RGBA texel at (x, y) and pack it into 0xRRGGBBAA. */
 uint32_t	sample_texture(mlx_texture_t *tex, int x, int y)
 {
 	uint8_t	*p;

@@ -12,7 +12,6 @@
 
 #include "../../includes/cub3d.h"
 
-/* Index of the first empty line at or after start (end of the map block). */
 static int	map_end(char **lines, int start)
 {
 	int	i;
@@ -23,7 +22,6 @@ static int	map_end(char **lines, int start)
 	return (i);
 }
 
-/* The map must be the last element: nothing but empty lines may follow. */
 static void	check_map_last(t_game *g, char **lines, int end)
 {
 	while (lines[end])
@@ -34,7 +32,6 @@ static void	check_map_last(t_game *g, char **lines, int end)
 	}
 }
 
-/* Length of the widest map line, used as the grid width. */
 static int	max_width(char **lines, int start, int end)
 {
 	int	i;
@@ -53,7 +50,6 @@ static int	max_width(char **lines, int start, int end)
 	return (w);
 }
 
-/* Copy src into a width-w row, padding short lines with spaces (void). */
 static void	copy_row(char *dst, char *src, int w)
 {
 	int	i;
@@ -72,7 +68,6 @@ static void	copy_row(char *dst, char *src, int w)
 	dst[w] = '\0';
 }
 
-/* Turn the map block of lines[start..] into a rectangular char grid. */
 void	build_map(t_game *g, char **lines, int start)
 {
 	int	end;

@@ -12,7 +12,6 @@
 
 #include "../../includes/cub3d.h"
 
-/* Append n bytes from buf onto dst (freed), returning the new buffer. */
 static char	*append_chunk(t_game *g, char *dst, char *buf, int n)
 {
 	size_t	old;
@@ -42,7 +41,6 @@ static char	*append_chunk(t_game *g, char *dst, char *buf, int n)
 	return (res);
 }
 
-/* Read the whole file descriptor into a single heap string. */
 static char	*read_all(t_game *g, int fd)
 {
 	char	buf[4096];
@@ -63,7 +61,6 @@ static char	*read_all(t_game *g, int fd)
 	return (content);
 }
 
-/* Read the scene file and return its lines as a NULL-terminated array. */
 char	**read_file(t_game *g, const char *path)
 {
 	int		fd;

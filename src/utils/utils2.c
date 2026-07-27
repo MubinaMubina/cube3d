@@ -12,7 +12,6 @@
 
 #include "../../includes/cub3d.h"
 
-/* Free a NULL-terminated array of strings and the array itself. */
 void	free_split(char **arr)
 {
 	int	i;
@@ -25,7 +24,6 @@ void	free_split(char **arr)
 	free(arr);
 }
 
-/* Advance *i past any spaces or tabs in s. */
 void	skip_spaces(const char *s, int *i)
 {
 	while (s[*i] == ' ' || s[*i] == '\t')

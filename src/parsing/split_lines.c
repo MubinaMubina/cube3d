@@ -12,7 +12,6 @@
 
 #include "../../includes/cub3d.h"
 
-/* Count the number of lines a '\n'-separated string splits into. */
 int	count_nl(const char *s)
 {
 	int	i;
@@ -31,7 +30,6 @@ int	count_nl(const char *s)
 	return (lines);
 }
 
-/* Duplicate len bytes of s into a fresh NUL-terminated string. */
 static char	*dup_line(t_game *g, const char *s, int len)
 {
 	char	*line;
@@ -50,7 +48,6 @@ static char	*dup_line(t_game *g, const char *s, int len)
 	return (line);
 }
 
-/* Split content on '\n' into the pre-allocated lines array. */
 void	fill_lines(t_game *g, char *content, char **lines)
 {
 	int	i;

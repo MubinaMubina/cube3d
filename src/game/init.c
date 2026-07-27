@@ -12,7 +12,6 @@
 
 #include "../../includes/cub3d.h"
 
-/* Set the direction and camera-plane vectors from the spawn character. */
 void	set_player_dir(t_game *game, char c)
 {
 	game->player.dir_x = 0;
@@ -41,7 +40,6 @@ void	set_player_dir(t_game *game, char c)
 	}
 }
 
-/* Create the window and drawing image, then load the wall textures. */
 void	init_mlx(t_game *game)
 {
 	game->mlx = mlx_init(WIN_W, WIN_H, "cub3D", false);

@@ -12,7 +12,6 @@
 
 #include "../../includes/cub3d.h"
 
-/* Ray direction for screen column x, mapped to camera space [-1, 1]. */
 static void	init_ray(t_game *game, t_ray *ray, int x)
 {
 	double	camera_x;
@@ -32,7 +31,6 @@ static void	init_ray(t_game *game, t_ray *ray, int x)
 		ray->delta_y = fabs(1.0 / ray->dir_y);
 }
 
-/* Set step direction and the initial side distances to cell borders. */
 static void	init_step(t_game *game, t_ray *ray)
 {
 	if (ray->dir_x < 0)
@@ -57,7 +55,6 @@ static void	init_step(t_game *game, t_ray *ray)
 	}
 }
 
-/* Step through the grid until we cross into a wall cell. */
 static void	run_dda(t_game *game, t_ray *ray)
 {
 	int	hit;
@@ -82,7 +79,6 @@ static void	run_dda(t_game *game, t_ray *ray)
 	}
 }
 
-/* Perpendicular distance (no fish-eye) and the stripe's screen extent. */
 static void	compute_stripe(t_ray *ray)
 {
 	if (ray->side == 0)

@@ -12,7 +12,6 @@
 
 #include "../../includes/cub3d.h"
 
-/* True if the line contains only spaces/tabs (or is empty). */
 int	line_is_empty(const char *line)
 {
 	int	i;
@@ -27,7 +26,6 @@ int	line_is_empty(const char *line)
 	return (1);
 }
 
-/* True if the identifier a/b is present at i and followed by a separator. */
 static int	match_id(const char *line, int i, char a, char b)
 {
 	if (line[i] != a || line[i + 1] != b)
@@ -37,7 +35,6 @@ static int	match_id(const char *line, int i, char a, char b)
 	return (0);
 }
 
-/* True if the line starts (after spaces) with a NO/SO/WE/EA/F/C element. */
 int	is_config_line(const char *line)
 {
 	int	i;
@@ -54,7 +51,6 @@ int	is_config_line(const char *line)
 	return (0);
 }
 
-/* Validate the .cub extension and that all six elements were parsed. */
 static void	check_scene(t_game *g, const char *path)
 {
 	size_t	len;
@@ -65,7 +61,6 @@ static void	check_scene(t_game *g, const char *path)
 		error_exit(g, "scene file must have a .cub extension");
 }
 
-/* Read the scene, parse the config block, then build and validate the map. */
 void	parse_scene(t_game *g, const char *path)
 {
 	char	**lines;

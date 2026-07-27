@@ -12,7 +12,6 @@
 
 #include "../../includes/cub3d.h"
 
-/* Record the spawn cell centre and orientation, then blank the tile. */
 static void	set_spawn(t_game *g, int x, int y, char c)
 {
 	g->player.x = x + 0.5;
@@ -21,7 +20,6 @@ static void	set_spawn(t_game *g, int x, int y, char c)
 	g->map[y][x] = '0';
 }
 
-/* Check one cell: returns 1 for a player start, 0 otherwise; errors on junk. */
 static int	handle_cell(t_game *g, int x, int y)
 {
 	char	c;
@@ -38,7 +36,6 @@ static int	handle_cell(t_game *g, int x, int y)
 	return (0);
 }
 
-/* Validate every cell and require exactly one player start position. */
 static void	check_chars(t_game *g)
 {
 	int	x;
@@ -61,7 +58,6 @@ static void	check_chars(t_game *g)
 		error_exit(g, "map must contain exactly one player start");
 }
 
-/* Flood the reachable floor; flag *open if it escapes into void/border. */
 static void	flood(t_game *g, int x, int y, int *open)
 {
 	if (x < 0 || y < 0 || x >= g->map_w || y >= g->map_h)
@@ -83,7 +79,6 @@ static void	flood(t_game *g, int x, int y, int *open)
 	flood(g, x, y - 1, open);
 }
 
-/* Restore flood markers, then run char + closure checks on the map. */
 void	validate_map(t_game *g)
 {
 	int	open;

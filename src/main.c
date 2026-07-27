@@ -12,7 +12,6 @@
 
 #include "../includes/cub3d.h"
 
-/* Zero every field so partial teardown is always safe on early errors. */
 static void	init_zero(t_game *game)
 {
 	int	i;
@@ -35,7 +34,6 @@ static void	init_zero(t_game *game)
 	}
 }
 
-/* Free every resource we may have allocated, in any partial state. */
 void	cleanup(t_game *game)
 {
 	int	i;
@@ -55,7 +53,6 @@ void	cleanup(t_game *game)
 		mlx_terminate(game->mlx);
 }
 
-/* Print "Error\n" plus a message, release everything, and exit. */
 void	error_exit(t_game *game, const char *msg)
 {
 	printf("Error\n%s\n", msg);

@@ -12,7 +12,6 @@
 
 #include "../../includes/cub3d.h"
 
-/* Error out unless only spaces/tabs remain from index i onward. */
 static void	check_line_end(t_game *g, char *line, int i)
 {
 	skip_spaces(line, &i);
@@ -20,7 +19,6 @@ static void	check_line_end(t_game *g, char *line, int i)
 		error_exit(g, "unexpected characters in element line");
 }
 
-/* Store the single token starting at pos as texture idx (must be unset). */
 static void	set_texture(t_game *g, int idx, char *line, int pos)
 {
 	int		end;
@@ -39,7 +37,6 @@ static void	set_texture(t_game *g, int idx, char *line, int pos)
 	line[end] = saved;
 }
 
-/* Parse one 0-255 byte at *i; advances past surrounding spaces. */
 static int	parse_byte(t_game *g, char *line, int *i)
 {
 	int	val;
@@ -60,7 +57,6 @@ static int	parse_byte(t_game *g, char *line, int *i)
 	return (val);
 }
 
-/* Parse "R,G,B" from pos and store it as floor (is_ceil 0) or ceiling. */
 static void	parse_color(t_game *g, char *line, int pos, int is_ceil)
 {
 	int	rgb[3];
@@ -90,7 +86,6 @@ static void	parse_color(t_game *g, char *line, int pos, int is_ceil)
 		error_exit(g, "duplicate floor or ceiling color");
 }
 
-/* Dispatch one config line to the matching texture or color parser. */
 void	parse_config(t_game *g, char *line)
 {
 	int	i;

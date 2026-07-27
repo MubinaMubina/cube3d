@@ -26,14 +26,14 @@ make fclean # remove object files and the binary
 make re     # full rebuild
 ```
 
-The Makefile compiles with `-Wall -Wextra -Werror` using `cc`, builds **MLX42**
-via its own CMake build, and does not relink unnecessarily. This project is the
-mandatory part only, so it uses no libft.
+The Makefile compiles with `-Wall -Wextra -Werror` using `cc`. The **MLX42**
+sources are included in `mlx42/` and built through their own CMake build. The
+project does not relink unnecessarily and uses no libft.
 
 ### Run
 
 ```bash
-./cub3D maps/example.cub
+./cub3D maps/maze.cub
 ```
 
 The program takes a single argument: a scene description file with the `.cub`

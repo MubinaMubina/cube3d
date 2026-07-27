@@ -33,7 +33,7 @@ mandatory part only, so it uses no libft.
 ### Run
 
 ```bash
-./cub3D maps/example.cub
+./cub3D maps/maze.cub
 ```
 
 The program takes a single argument: a scene description file with the `.cub`

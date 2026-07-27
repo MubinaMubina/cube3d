@@ -1,4 +1,4 @@
-*This project has been created as part of the 42 curriculum by mmubina.*
+*This project has been created as part of the 42 curriculum by mmubina and hmekouar.*
 
 # cub3D
 
@@ -20,16 +20,15 @@ configurable colors.
 ### Build
 
 ```bash
-make        # build the mandatory program (cub3D)
-make bonus  # build the bonus version
+make        # build cub3D (mandatory)
 make clean  # remove object files
 make fclean # remove object files and the binary
 make re     # full rebuild
 ```
 
-The Makefile compiles with `-Wall -Wextra -Werror` using `cc`, builds `libft`
-and **MLX42** (via its CMake build) from their own build systems, and does not
-relink unnecessarily.
+The Makefile compiles with `-Wall -Wextra -Werror` using `cc`, builds **MLX42**
+via its own CMake build, and does not relink unnecessarily. This project is the
+mandatory part only, so it uses no libft.
 
 ### Run
 
@@ -52,10 +51,10 @@ extension.
 ### Scene file (`.cub`) format
 
 ```
-NO ./path_to_north_texture
-SO ./path_to_south_texture
-WE ./path_to_west_texture
-EA ./path_to_east_texture
+NO ./path_to_north_texture.png
+SO ./path_to_south_texture.png
+WE ./path_to_west_texture.png
+EA ./path_to_east_texture.png
 F 220,100,0          # floor color   R,G,B in [0,255]
 C 225,30,0           # ceiling color R,G,B in [0,255]
 
@@ -113,7 +112,7 @@ A self-study path, in roughly the order it's needed for the build.
 - The 42 Norm (function length, variable limits, etc.).
 - Memory management: `valgrind` for zero leaks; free MLX resources
   (`mlx_delete_image`, `mlx_terminate`).
-- Makefile: `all clean fclean re bonus`, no relinking, libft + MLX42 (CMake) builds.
+- Makefile: `all clean fclean re bonus`, no relinking, MLX42 (CMake) build.
 
 **Suggested order:** C/Makefile/norm refresher → MLX42 (pixel, image, keys)
 → ray-casting (untextured walls, then textures) → movement & rotation →

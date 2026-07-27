@@ -1,9 +1,9 @@
-NO ./textures/north.png
-SO ./textures/south.png
-WE ./textures/west.png
-EA ./textures/east.png
+NO ./textures/wall2.png
+SO ./textures/stone.png
+WE ./textures/coffin.png
+EA ./textures/floor.png
 
-F 220,100,0
+F 110,70,40
 C 135,206,235
 
 1111111111111111
